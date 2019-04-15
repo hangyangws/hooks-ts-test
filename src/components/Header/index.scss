@@ -1,0 +1,31 @@
+@import 'Resource/css/variable.scss';
+
+.header {
+  background: #fff;
+  box-shadow: $shadow;
+
+  &-content {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    position: relative;
+    width: $main-width;
+  }
+
+  &-user {
+    position: absolute !important;
+    right: 4px;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    &-content {
+      width: auto;
+    }
+  }
+}

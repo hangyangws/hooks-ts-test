@@ -1,0 +1,54 @@
+@import 'Resource/css/variable.scss';
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 278px;
+  background-color: $sub-color;
+  color: #fff;
+  overflow-y: auto;
+
+  &-content {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-item {
+    line-height: 45px;
+    padding: 0 33px;
+    transition: background-color .4s, color .4s;
+
+    &.active,
+    &:hover {
+      color: $main-color;
+      background-color: rgba(255, 255, 255, .1);
+    }
+  }
+
+  &-itemIcon {
+    margin-right: 16px;
+  }
+
+  &-history {
+    padding: 14px;
+
+    &Title {
+      font-size: 24px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    &Item {
+      line-height: 25px;
+      font-size: 12px;
+      transition: color .4s;
+      color: #999;
+
+      &:hover {
+        color: $main-color;
+      };
+    }
+  }
+}

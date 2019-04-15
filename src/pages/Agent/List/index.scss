@@ -1,0 +1,159 @@
+@import 'Resource/css/variable.scss';
+
+.agentList {
+  display: flex;
+  flex-direction: column;
+
+  &-itemWrap {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &-item {
+    background-color: #fff;
+    margin-bottom: 18px;
+    display: flex;
+
+    &Img {
+      width: 80px;
+      height: 80px;
+      margin: 10px;
+    }
+
+    &Content {
+      flex: 1;
+      padding: 0 10px;
+    }
+
+    &Option {
+      height: 50%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    &NameWrap {
+      display: flex;
+      align-content: center;
+      margin-right: 50px;
+
+      > i {
+        color: #aaa;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+    }
+
+    &Name {
+      color: $main-color;
+      font-weight: bolder;
+      margin-right: 26px;
+    }
+
+    &Status {
+      height: 20px;
+      line-height: 20px;
+      color: #fff;
+      padding: 0 10px;
+
+      &.green {
+        background-color: $green;
+      }
+
+      &.yellow {
+        background-color: $yellow;
+      }
+    }
+
+    &Other {
+      display: flex;
+      align-items: center;
+
+      & > li {
+        display: flex;
+        align-content: center;
+        margin-right: 20px;
+
+        > i {
+          font-size: 16px;
+          color: #aaa;
+          margin-right: 10px;
+        }
+      }
+    }
+
+    &Resource {
+      display: flex;
+      align-items: center;
+    }
+
+    &ResourceNew {
+      width: 28px;
+      height: 28px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $main-color;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color .4s;
+
+      &:hover {
+        background-color: $main-color-sub;
+      }
+    }
+
+    &ResourceList {
+      display: flex;
+      align-items: center;
+    }
+
+    &ResourceItem {
+      background-color: #f0ede5;
+      height: 28px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+
+      > span {
+        margin-right: 10px;
+      }
+      > i {
+        font-size: 16px;
+        cursor: pointer;
+      }
+    }
+
+    &ResourceDeny {
+      position: absolute;
+      right: 0;
+      background-color: $main-color;
+      transition: background-color .4s;
+      height: 30px;
+      padding: 0 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      border: none;
+      cursor: pointer;
+
+      > i {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: $main-color-sub;
+      };
+    }
+  }
+
+  &-newResource {
+    position: absolute;
+    top: 52px;
+    left: -14px;
+    z-index: 1;
+  }
+}

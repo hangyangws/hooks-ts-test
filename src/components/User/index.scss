@@ -1,0 +1,59 @@
+@import 'Resource/css/variable.scss';
+
+.user {
+  position: relative;
+
+  &-content {
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+
+  &-img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  &-icon {
+    font-size: 26px;
+    line-height: 10px;
+    align-self: center;
+  }
+
+  &-func {
+    background-color: #fff;
+    box-shadow: $shadow;
+    padding: 10px 0;
+    transition: transform .4s, opacity .4s;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, -20px, 0);
+    position: absolute;
+    top: 42px;
+    right: 0;
+  }
+
+  &:hover &-func {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  &-funcItem {
+    width: 100px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+
+    > i {
+      margin-right: 10px;
+    }
+
+    &:hover {
+      background-color: #efefef;
+    }
+  }
+}

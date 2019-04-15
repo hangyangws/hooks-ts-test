@@ -1,0 +1,81 @@
+@import 'Resource/css/variable.scss';
+
+.newResource {
+  padding: 10px;
+  border: 1px solid $main-color;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  background-color: #fff;
+  position: relative;
+  width: 570px;
+
+  &-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: .4;
+    z-index: 1;
+  }
+
+  &-arrow {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: -26px;
+    left: 12px;
+
+    &::before {
+      content: '';
+      width: 0;
+      height: 0;
+      display: block;
+      border: 13px solid transparent;
+      border-bottom-color: $main-color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 0;
+      display: block;
+      border: 13px solid transparent;
+      border-bottom-color: #fff;
+    }
+  }
+
+  &-icon {
+    color: $main-color;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  &-title {
+    padding-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  &-input {
+    border-radius: $radius;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    height: 30px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, .2)
+  }
+
+  &-button {
+    display: flex;
+
+    > button:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+}

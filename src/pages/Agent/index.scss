@@ -1,0 +1,19 @@
+.agent {
+  padding: 18px 0 0 30px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+
+  &-allView {
+    margin-bottom: 16px;
+  }
+
+  &-list {
+    flex: 1;
+  }
+
+  &-empty {
+    padding: 20px;
+  }
+}
