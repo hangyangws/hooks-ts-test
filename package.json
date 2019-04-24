@@ -4,7 +4,7 @@
   "description": "tw code",
   "private": true,
   "scripts": {
-    "start-server": "cd ./mock-server && tnpm start",
+    "start-server": "cd ./mock-server && npm start",
     "start": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint . --ext '.js,.jsx' --fix"
