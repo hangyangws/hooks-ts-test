@@ -62,7 +62,7 @@ const List = withRouter((props) => {
   return (
     <div className={cx(props.className, 'agentList')}>
       <TypeNav data={typeNameList} />
-      <ul className="agentList-itemWrap">
+      <ul>
         {!Boolean(renderList.length) && (
           <p>没有任何数据！</p>
         )}

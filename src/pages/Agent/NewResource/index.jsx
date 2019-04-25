@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cx from 'classnames';
 
 import request from 'Api/request';
@@ -10,9 +10,16 @@ import Button from 'Components/Button';
 import './index.scss';
 
 const NewResource = (props) => {
+  const inputElement = React.useRef(null);
   const { state: notice, dispatch: noticeDispatch } = React.useContext(Notice.Context);
   const { dispatch: agentsDispatch } = React.useContext(Agents.Context);
   const [resource, setResource] = React.useState('');
+
+  useEffect(() => {
+    if (inputElement && inputElement.current) {
+      inputElement.current.focus();
+    }
+  });
 
   if (notice.newResourceAgentId !== props.data.id) {
     return null;
@@ -56,25 +63,23 @@ const NewResource = (props) => {
   };
 
   return (
-    <React.Fragment>
-      <div className="newResource-mask" onClick={handleClose} />
-      <div className={cx('newResource', props.className)}>
-        <i className="newResource-arrow" />
-        <i onClick={handleClose} className="newResource-icon icon-close" />
-        <p className="newResource-title">Separate multiple resource name with commas</p>
-        <input
-          value={resource}
-          onChange={handleChangeResource}
-          className="newResource-input"
-          type="text"
-          placeholder="Input value"
-        />
-        <div className="newResource-button">
-          <Button onClick={handleAddResources}>Add Resources</Button>
-          <Button gray onClick={handleClose}>Cancel</Button>
-        </div>
+    <div onBlur={handleClose} className={cx('newResource', props.className)}>
+      <i className="newResource-arrow" />
+      <i onClick={handleClose} className="newResource-icon icon-close" />
+      <p className="newResource-title">Separate multiple resource name with commas</p>
+      <input
+        ref={inputElement}
+        value={resource}
+        onChange={handleChangeResource}
+        className="newResource-input"
+        type="text"
+        placeholder="Input value"
+      />
+      <div className="newResource-button">
+        <Button onClick={handleAddResources}>Add Resources</Button>
+        <Button gray onClick={handleClose}>Cancel</Button>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

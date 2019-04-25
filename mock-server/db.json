@@ -8,7 +8,6 @@
       "ip": "192.168.1.102",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "adfa",
         "asdf",
         "sdf",
         "sdf"

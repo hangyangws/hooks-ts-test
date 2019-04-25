@@ -1,14 +1,6 @@
 @import 'Resource/css/variable.scss';
 
 .agentList {
-  display: flex;
-  flex-direction: column;
-
-  &-itemWrap {
-    flex: 1;
-    overflow-y: auto;
-  }
-
   &-item {
     background-color: #fff;
     margin-bottom: 18px;
