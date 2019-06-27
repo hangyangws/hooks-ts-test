@@ -4,8 +4,8 @@
   "description": "tw code",
   "private": true,
   "scripts": {
-    "start-server": "cd ./mock-server && npm start",
-    "start": "webpack-dev-server --open",
+    "start-server": "cd ./mock-server && npm i && npm start",
+    "start": "npm i && webpack-dev-server --open",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint . --ext '.js,.jsx' --fix"
   },
@@ -16,10 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
-    "npm": "^6.9.0",
+    "npm": "^6.9.1",
     "query-string": "^6.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

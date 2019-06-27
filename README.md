@@ -10,10 +10,9 @@
 
 1. [nodeJS](https://nodejs.org/zh-cn/) 8.0 以上版本
 
-## 启动本地 mock 服务
+## 启动数据 mock 服务本地服务
 
-1. 进入 `mock-server` 文件夹执行：`npm i`
-2. 项目根目录执行：`npm run start-server`
+1. `npm run start-server`
 
 ## 启动应用
 
