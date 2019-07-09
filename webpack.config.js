@@ -81,7 +81,16 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
+    alias: {
+      '@api': path.resolve(__dirname, 'src/api/'),
+      '@components': path.resolve(__dirname, 'src/components/'),
+      '@config': path.resolve(__dirname, 'src/config/'),
+      '@pages': path.resolve(__dirname, 'src/pages/'),
+      '@resource': path.resolve(__dirname, 'src/resource/'),
+      '@store': path.resolve(__dirname, 'src/store/'),
+      '@utils': path.resolve(__dirname, 'src/utils/')
+    }
   },
   devServer: {
     contentBase: path.resolve(__dirname, buildPath),
