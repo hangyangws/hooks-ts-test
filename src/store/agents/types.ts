@@ -1,5 +1,5 @@
-type Resources = ('Firefox' | 'Safari' | 'Ubuntu' | 'Chrome')[];
-type Os = 'centos' | 'debian' | 'suse' | 'ubuntu' | 'windows';
+export type Resources = ('Firefox' | 'Safari' | 'Ubuntu' | 'Chrome')[];
+export type Os = 'centos' | 'debian' | 'suse' | 'ubuntu' | 'windows';
 
 export interface AddResources {
   id: number;

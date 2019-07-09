@@ -2,18 +2,25 @@ import React, { useEffect } from 'react';
 import cx from 'classnames';
 
 import request from '@api/request';
-import Notice from '@store/notice/index';
-import Agents from '@store/agents/index';
+import {
+  useDispatch as useNoticeDispatch,
+  useState as useNoticeState
+} from '@store/notice/index';
+import {
+  useDispatch as useAgentsDispatch
+} from '@store/agents/index';
 import Button from '@components/Button';
 
 import { AgentItemProps } from '../types';
 
 import './index.scss';
+import { AddResources, Resources } from '@store/agents/types';
 
 const NewResource = (props: AgentItemProps) => {
   const inputElement = React.useRef<HTMLInputElement>(null);
-  const { state: notice, dispatch: noticeDispatch } = React.useContext(Notice.Context);
-  const { dispatch: agentsDispatch } = React.useContext(Agents.Context);
+  const noticeDispatch = useNoticeDispatch();
+  const notice = useNoticeState();
+  const agentsDispatch = useAgentsDispatch();
   const [resource, setResource] = React.useState('');
 
   useEffect(() => {
@@ -45,16 +52,17 @@ const NewResource = (props: AgentItemProps) => {
           ...newResource
         ]
       };
+      const payload: AddResources = {
+        id: props.data.id,
+        data: newResource as Resources
+      };
       request({
         noticeDispatch,
         apiPath: 'agents/modify',
         callBack: () => {
           agentsDispatch({
             type: 'ADD_RESOURCES',
-            payload: {
-              id: props.data.id,
-              data: newResource
-            }
+            payload
           });
           setResource('');
         }

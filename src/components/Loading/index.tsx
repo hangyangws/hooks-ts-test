@@ -1,10 +1,10 @@
 import React from 'react';
-import Notice from '@store/notice/index';
+import { useState } from '@store/notice/index';
 
 import './index.scss';
 
 const Loading = () => {
-  const { state } = React.useContext(Notice.Context);
+  const state = useState();
 
   return state.loading
     ? (

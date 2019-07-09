@@ -5,8 +5,8 @@ import cx from 'classnames';
 
 import request from '@api/request';
 import osImg from '@resource/osImg/index';
-import Notice from '@store/notice/index';
-import Agents from '@store/agents/index';
+import { useDispatch as useNoticeDispatch } from '@store/notice/index';
+import { useDispatch as useAgentsDispatch } from '@store/agents/index';
 import { Item } from '@store/agents/types';
 import { titleCase, getAgentTypeList } from '@utils/index';
 
@@ -28,8 +28,8 @@ const getRenderList = (data: Item[], type: string, keywords: string) => {
 };
 
 const List = withRouter((props: RoutedAgentItemsProps) => {
-  const { dispatch: noticeDispatch } = React.useContext(Notice.Context);
-  const { dispatch: agentsDispatch } = React.useContext(Agents.Context);
+  const noticeDispatch = useNoticeDispatch();
+  const agentsDispatch = useAgentsDispatch();
 
   const typeNameList = getAgentTypeList(props.data).map(item => titleCase(item.name));
   const { type = 'All', keywords = '' } = queryString.parse(props.location.search);
