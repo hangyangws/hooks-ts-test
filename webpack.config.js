@@ -21,14 +21,21 @@ module.exports = {
           use: ['css-loader', 'sass-loader']
         })
       },
+      // {
+      //   test: /\.jsx?$/,
+      //   exclude: /(node_modules|bower_components)/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: ['@babel/preset-env']
+      //     }
+      //   }
+      // },
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
+          loader: 'ts-loader'
         }
       },
       {
@@ -74,16 +81,7 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
-    alias: {
-      Api: path.resolve(__dirname, 'src/api/'),
-      Components: path.resolve(__dirname, 'src/components/'),
-      Config: path.resolve(__dirname, 'src/config/'),
-      Store: path.resolve(__dirname, 'src/store/'),
-      Pages: path.resolve(__dirname, 'src/pages/'),
-      Resource: path.resolve(__dirname, 'src/resource/'),
-      Utils: path.resolve(__dirname, 'src/utils/')
-    }
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']
   },
   devServer: {
     contentBase: path.resolve(__dirname, buildPath),
