@@ -1,14 +1,11 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# dependencies
-/node_module
-
 # mock-server
-/mock-server
+mock-server
 
 # production
-/build
-/dist
+build/
+dist/
 
 # misc
 .idea/
@@ -19,6 +16,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 node_modules
-
-# mock data
-/mock-server/db.json
