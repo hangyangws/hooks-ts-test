@@ -21,7 +21,7 @@ const SitesList = () => {
   const noticeDispatch = useNoticeDispatch();
 
   React.useEffect(() => {
-    if (!agents) {
+    if (!agents.length) {
       // 请求数据
       request({
         noticeDispatch,
