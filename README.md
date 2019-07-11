@@ -18,3 +18,13 @@
 
 1. `npm start`
 2. 浏览器就会自动打开：`http://localhost:9000`
+
+## function list
+
+- react + hooks
+- webpack
+- local mock
+- eslint
+- stylelint + stylelint-order
+- typescript
+- jest + enzyme
