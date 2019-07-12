@@ -21,16 +21,6 @@ module.exports = {
           use: ['css-loader', 'sass-loader']
         })
       },
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: /(node_modules|bower_components)/,
-      //   use: {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       presets: ['@babel/preset-env']
-      //     }
-      //   }
-      // },
       {
         test: /\.tsx?$/,
         exclude: /(node_modules|bower_components)/,
