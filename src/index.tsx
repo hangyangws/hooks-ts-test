@@ -9,7 +9,6 @@ import MyCruise from '@pages/MyCruise/index';
 import Help from '@pages/Help/index';
 import NotFound from '@pages/NotFound/index';
 
-import '@babel/polyfill';
 import '@resource/css/base.css';
 import '@resource/css/fonts.css';
 

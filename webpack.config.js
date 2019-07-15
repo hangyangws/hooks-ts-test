@@ -1,7 +1,7 @@
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const buildPath = 'build';
@@ -28,10 +28,10 @@ module.exports = {
         ]
       },
       {
-        test: /\.tsx?$/,
+        test: /\.(js|ts)x?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'ts-loader'
+          loader: 'babel-loader'
         }
       },
       {
@@ -51,10 +51,10 @@ module.exports = {
       title: 'TW',
       filename: 'index.html',
     }),
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: 'index.css'
     }),
-    new OptimizeCssAssetsPlugin({
+    new OptimizeCSSAssetsPlugin({
       assetNameRegExp: /index\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorPluginOptions: {
