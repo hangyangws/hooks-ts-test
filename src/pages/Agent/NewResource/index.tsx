@@ -17,17 +17,10 @@ import './index.scss';
 import { AddResources, Resources } from '@store/agents/types';
 
 const NewResource = (props: AgentItemProps) => {
-  const inputElement = React.useRef<HTMLInputElement>(null);
   const noticeDispatch = useNoticeDispatch();
   const notice = useNoticeState();
   const agentsDispatch = useAgentsDispatch();
   const [resource, setResource] = React.useState('');
-
-  useEffect(() => {
-    if (inputElement && inputElement.current) {
-      inputElement.current.focus();
-    }
-  });
 
   if (notice.newResourceAgentId !== props.data.id) {
     return null;
@@ -72,12 +65,11 @@ const NewResource = (props: AgentItemProps) => {
   };
 
   return (
-    <div onBlur={handleClose} className={cx('newResource', props.className)}>
+    <div className={cx('newResource', props.className)}>
       <i className="newResource-arrow" />
       <i onClick={handleClose} className="newResource-icon icon-close" />
       <p className="newResource-title">Separate multiple resource name with commas</p>
       <input
-        ref={inputElement}
         value={resource}
         onChange={handleChangeResource}
         className="newResource-input"
