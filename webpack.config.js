@@ -15,11 +15,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|scss|sass)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        test: /\.(c|sc|sa)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.tsx?$/,
