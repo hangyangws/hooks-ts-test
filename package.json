@@ -83,7 +83,6 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "npm run --silent lint",
-      "echo 'Lint Done.'",
       "git add"
     ]
   },
