@@ -9,5 +9,5 @@ export default {
   debian,
   suse,
   ubuntu,
-  windows
+  windows,
 };

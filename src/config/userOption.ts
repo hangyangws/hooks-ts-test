@@ -8,7 +8,7 @@ const optinons = [
     name: 'Sign Out',
     path: '/signin',
     icon: 'sign-in',
-  }
+  },
 ];
 
 export default optinons;

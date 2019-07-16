@@ -23,10 +23,7 @@ const FuncList = () => (
 const User = (props: Props) => (
   <div className={cx(props.className, 'user')}>
     <div className="user-content">
-      <img
-        src={userImg}
-        className="user-img"
-      />
+      <img src={userImg} className="user-img" />
       <i className="user-icon icon-angle-down" />
     </div>
     <FuncList />

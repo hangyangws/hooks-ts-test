@@ -1,11 +1,10 @@
 import apiMaps from './index';
 import { Request } from './types';
 
-const request = ({
-  noticeDispatch,
-  apiPath,
-  callBack
-}: Request, ...rest: any[]) => {
+const request = (
+  { noticeDispatch, apiPath, callBack }: Request,
+  ...rest: any[]
+) => {
   const [name, method] = apiPath.split('/');
   const requestMethod = apiMaps[name][method];
 
@@ -21,8 +20,7 @@ const request = ({
         noticeDispatch({ type: 'STOP' });
       }
     })
-    .catch((err: Error) => {
-      console.log(err.message);
+    .catch(() => {
       callBack(false);
       if (noticeDispatch) {
         noticeDispatch({ type: 'STOP' });

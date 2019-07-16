@@ -9,11 +9,7 @@ import './index.scss';
 
 const Logo = (props: Props) => (
   <Link to="/" className={cx(props.className, 'logo')}>
-    <img
-      className="logo-img"
-      src={logoUrl}
-      alt="CRULSE"
-    />
+    <img className="logo-img" src={logoUrl} alt="CRULSE" />
   </Link>
 );
 

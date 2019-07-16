@@ -9,7 +9,7 @@ interface SearchProps extends Props {
   value: string;
   onSearch(value: string): void;
   placeholder: string;
-};
+}
 
 const SearchInput = (props: SearchProps) => {
   const [value, setValue] = React.useState(props.value);
@@ -22,10 +22,10 @@ const SearchInput = (props: SearchProps) => {
     }
   };
   const handleKeyup = (e: React.KeyboardEvent) => {
-    if(e.keyCode === 13) {
+    if (e.keyCode === 13) {
       handleSearch();
     }
-  }
+  };
 
   return (
     <div className={cx(props.className, 'searchInput')}>

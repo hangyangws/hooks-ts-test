@@ -3,7 +3,6 @@ package.json
 .next
 node_modules/
 build/
-node_modules/
 mock-server/
 
 **/*-min.js

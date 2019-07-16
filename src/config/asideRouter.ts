@@ -18,7 +18,7 @@ const asideRouter = [
     name: 'HELP',
     path: 'help',
     icon: 'life-bouy',
-  }
+  },
 ];
 
 export default asideRouter;

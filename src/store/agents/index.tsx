@@ -14,17 +14,11 @@ export const Provider: React.ComponentType = (props: Props) => {
 
   return (
     <dispatchCtx.Provider value={dispatch}>
-      <stateCtx.Provider value={state}>
-        {props.children}
-      </stateCtx.Provider>
+      <stateCtx.Provider value={state}>{props.children}</stateCtx.Provider>
     </dispatchCtx.Provider>
   );
 };
 
-export const useDispatch = () => {
-  return React.useContext(dispatchCtx);
-};
+export const useDispatch = () => React.useContext(dispatchCtx);
 
-export const useState = () => {
-  return React.useContext(stateCtx);
-};
+export const useState = () => React.useContext(stateCtx);

@@ -9,30 +9,29 @@ const reducer = (state: State, action: Action) => {
     case 'ADD_RESOURCES': {
       const { payload } = action;
 
-      return state.map(agent => (agent.id === payload.id
-        ? ({
-          ...agent,
-          resources: [
-            ...agent.resources,
-            ...payload.data
-          ]
-        })
-        : agent
-      ));
-    };
+      return state.map(agent =>
+        agent.id === payload.id
+          ? {
+              ...agent,
+              resources: [...agent.resources, ...payload.data],
+            }
+          : agent,
+      );
+    }
     case 'DELETE_RESOURCES': {
       const { payload } = action;
 
-      return state.map(agent => (agent.id === payload.id
-        ? ({
-          ...agent,
-          resources: agent.resources.filter(
-            (_, index) => index !== payload.data
-          )
-        })
-        : agent
-      ));
-    };
+      return state.map(agent =>
+        agent.id === payload.id
+          ? {
+              ...agent,
+              resources: agent.resources.filter(
+                (_, index) => index !== payload.data,
+              ),
+            }
+          : agent,
+      );
+    }
     default:
       return state;
   }

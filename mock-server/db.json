@@ -8,11 +8,8 @@
       "ip": "192.168.1.102",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "asdf",
-        "sdf",
-        "sdf",
-        "sdf",
-        "啥地方"
+        "test",
+        "abc"
       ],
       "id": 1
     },
@@ -34,8 +31,7 @@
       "ip": "192.168.1.117",
       "location": "/var/lib/cruise-agent",
       "resources": [
-        "Firefox",
-        "Safari"
+        "Firefox"
       ],
       "id": 3
     },

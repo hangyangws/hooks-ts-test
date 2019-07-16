@@ -21,43 +21,55 @@ const getRenderList = (data: Item[], type: string, keywords: string) => {
     return data.filter(item => item.name.includes(keywords));
   }
 
-  return data.filter(item => (
-    (item.type.toLocaleLowerCase() === type.toLocaleLowerCase()) &&
-    item.name.includes(keywords)
-  ));
+  return data.filter(
+    item =>
+      item.type.toLocaleLowerCase() === type.toLocaleLowerCase() &&
+      item.name.includes(keywords),
+  );
 };
 
 const List = withRouter((props: RoutedAgentItemsProps) => {
   const noticeDispatch = useNoticeDispatch();
   const agentsDispatch = useAgentsDispatch();
 
-  const typeNameList = getAgentTypeList(props.data).map(item => titleCase(item.name));
-  const { type = 'All', keywords = '' } = queryString.parse(props.location.search);
-  const renderList = getRenderList(props.data, type as string, keywords as string);
+  const typeNameList = getAgentTypeList(props.data).map(item =>
+    titleCase(item.name),
+  );
+  const { type = 'All', keywords = '' } = queryString.parse(
+    props.location.search,
+  );
+  const renderList = getRenderList(
+    props.data,
+    type as string,
+    keywords as string,
+  );
 
   const handleDeleteResource = (item: Item, index: number) => () => {
     const newItem = {
       ...item,
-      resources: item.resources.filter((_, i) => i !== index)
+      resources: item.resources.filter((_, i) => i !== index),
     };
-    request({
-      noticeDispatch,
-      apiPath: 'agents/modify',
-      callBack: () => {
-        agentsDispatch({
-          type: 'DELETE_RESOURCES',
-          payload: {
-            id: item.id,
-            data: index
-          }
-        });
-      }
-    }, newItem);
+    request(
+      {
+        noticeDispatch,
+        apiPath: 'agents/modify',
+        callBack: () => {
+          agentsDispatch({
+            type: 'DELETE_RESOURCES',
+            payload: {
+              id: item.id,
+              data: index,
+            },
+          });
+        },
+      },
+      newItem,
+    );
   };
   const handleNewResource = (item: Item) => () => {
     noticeDispatch({
       type: 'NEW_RESOURCE',
-      payload: item.id
+      payload: item.id,
     });
   };
 
@@ -65,24 +77,28 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
     <div className={cx(props.className, 'agentList')}>
       <TypeNav data={typeNameList} />
       <ul>
-        {!Boolean(renderList.length) && (
-          <p>没有任何数据！</p>
-        )}
-        {renderList.map((item) => {
+        {!renderList.length && <p>没有任何数据！</p>}
+        {renderList.map(item => {
           const status = item.status.toLocaleLowerCase();
 
           return (
             <li className="agentList-item" key={item.id}>
-              <img className="agentList-itemImg" src={osImg[item.os]} alt={item.os} />
+              <img
+                className="agentList-itemImg"
+                src={osImg[item.os]}
+                alt={item.os}
+              />
               <div className="agentList-itemContent">
                 <div className="agentList-itemOption">
                   <div className="agentList-itemNameWrap">
                     <i className="icon-desktop" />
                     <span className="agentList-itemName">{item.name}</span>
-                    <span className={cx('agentList-itemStatus', {
-                      green: status === 'idle',
-                      yellow: status === 'building'
-                    })}>
+                    <span
+                      className={cx('agentList-itemStatus', {
+                        green: status === 'idle',
+                        yellow: status === 'building',
+                      })}
+                    >
                       {status}
                     </span>
                   </div>
@@ -99,7 +115,10 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
                 </div>
                 <div className="agentList-itemOption">
                   <div className="agentList-itemResource">
-                    <button onClick={handleNewResource(item)} className="agentList-itemResourceNew">
+                    <button
+                      onClick={handleNewResource(item)}
+                      className="agentList-itemResourceNew"
+                    >
                       <i className="icon-plus" />
                     </button>
                     <ul className="agentList-itemResourceList">
@@ -113,9 +132,12 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
                         </li>
                       ))}
                     </ul>
-                    <NewResource data={item} className="agentList-newResource" />
+                    <NewResource
+                      data={item}
+                      className="agentList-newResource"
+                    />
                   </div>
-                  {(status === 'building') && (
+                  {status === 'building' && (
                     <button className="agentList-itemResourceDeny">
                       <i className="icon-deny" />
                       <span>Deny</span>

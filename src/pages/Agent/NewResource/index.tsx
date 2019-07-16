@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import cx from 'classnames';
 
 import request from '@api/request';
 import {
   useDispatch as useNoticeDispatch,
-  useState as useNoticeState
+  useState as useNoticeState,
 } from '@store/notice/index';
-import {
-  useDispatch as useAgentsDispatch
-} from '@store/agents/index';
+import { useDispatch as useAgentsDispatch } from '@store/agents/index';
 import Button from '@components/Button';
 
 import { AgentItemProps } from '../types';
@@ -28,7 +26,7 @@ const NewResource = (props: AgentItemProps) => {
 
   const handleClose = () => {
     noticeDispatch({
-      type: 'CLOSE_RESOURCE'
+      type: 'CLOSE_RESOURCE',
     });
     setResource('');
   };
@@ -40,26 +38,26 @@ const NewResource = (props: AgentItemProps) => {
       const newResource = resource.split(/,|，/);
       const newItem = {
         ...props.data,
-        resources: [
-          ...props.data.resources,
-          ...newResource
-        ]
+        resources: [...props.data.resources, ...newResource],
       };
       const payload: AddResources = {
         id: props.data.id,
-        data: newResource as Resources
+        data: newResource as Resources,
       };
-      request({
-        noticeDispatch,
-        apiPath: 'agents/modify',
-        callBack: () => {
-          agentsDispatch({
-            type: 'ADD_RESOURCES',
-            payload
-          });
-          setResource('');
-        }
-      }, newItem);
+      request(
+        {
+          noticeDispatch,
+          apiPath: 'agents/modify',
+          callBack: () => {
+            agentsDispatch({
+              type: 'ADD_RESOURCES',
+              payload,
+            });
+            setResource('');
+          },
+        },
+        newItem,
+      );
     }
     handleClose();
   };
@@ -68,7 +66,9 @@ const NewResource = (props: AgentItemProps) => {
     <div className={cx('newResource', props.className)}>
       <i className="newResource-arrow" />
       <i onClick={handleClose} className="newResource-icon icon-close" />
-      <p className="newResource-title">Separate multiple resource name with commas</p>
+      <p className="newResource-title">
+        Separate multiple resource name with commas
+      </p>
       <input
         value={resource}
         onChange={handleChangeResource}
@@ -78,7 +78,9 @@ const NewResource = (props: AgentItemProps) => {
       />
       <div className="newResource-button">
         <Button onClick={handleAddResources}>Add Resources</Button>
-        <Button gray onClick={handleClose}>Cancel</Button>
+        <Button gray onClick={handleClose}>
+          Cancel
+        </Button>
       </div>
     </div>
   );

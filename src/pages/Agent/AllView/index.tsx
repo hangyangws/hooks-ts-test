@@ -25,7 +25,9 @@ const AllView = (props: AgentItemsProps) => {
       <ul className="agentAllView-type">
         {typeList.map(type => (
           <li key={type.name} className="agentAllView-typeItem">
-            <span className="agentAllView-typeName">{type.name.toUpperCase()}</span>
+            <span className="agentAllView-typeName">
+              {type.name.toUpperCase()}
+            </span>
             <span className="agentAllView-typeNumber">{type.number}</span>
           </li>
         ))}

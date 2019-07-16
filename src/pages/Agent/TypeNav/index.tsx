@@ -4,20 +4,22 @@ import queryString from 'query-string';
 import cx from 'classnames';
 
 import SearchInput from '@components/SearchInput';
-import { RoutedAgentTypeProps} from '../types'
+import { RoutedAgentTypeProps } from '../types';
 
 import './index.scss';
 
 const TypeNav = (props: RoutedAgentTypeProps) => {
-  const { type = 'All', keywords = '' } = queryString.parse(props.location.search);
+  const { type = 'All', keywords = '' } = queryString.parse(
+    props.location.search,
+  );
 
   const handleSearch = (val: string) => {
     props.history.push({
       ...props.history.location,
       search: queryString.stringify({
         type,
-        keywords: val
-      })
+        keywords: val,
+      }),
     });
   };
   const handleChangeType = (val: string) => () => {
@@ -28,8 +30,8 @@ const TypeNav = (props: RoutedAgentTypeProps) => {
       ...props.history.location,
       search: queryString.stringify({
         type: val,
-        keywords
-      })
+        keywords,
+      }),
     });
   };
 
@@ -38,14 +40,21 @@ const TypeNav = (props: RoutedAgentTypeProps) => {
       <ul className="agentTypeNav-type">
         {props.data.map(typeName => (
           <li
-            className={cx('agentTypeNav-typeName', { 'active': type === typeName })}
+            className={cx('agentTypeNav-typeName', {
+              active: type === typeName,
+            })}
             onClick={handleChangeType(typeName)}
-            key={typeName}>
+            key={typeName}
+          >
             {typeName}
           </li>
         ))}
       </ul>
-      <SearchInput value={keywords as string} onSearch={handleSearch} placeholder="搜索 name" />
+      <SearchInput
+        value={keywords as string}
+        onSearch={handleSearch}
+        placeholder="搜索 name"
+      />
     </div>
   );
 };
