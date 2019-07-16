@@ -36,7 +36,7 @@ const SitesList = () => {
   }
 
   if (!agents.length) {
-    return <p className="agent-empty">数据为空</p>;
+    return <p className="agent-empty">Data empty.</p>;
   }
 
   return (
