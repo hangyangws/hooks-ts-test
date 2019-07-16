@@ -5,5 +5,5 @@ import { isDev } from '@utils/isDev';
 const history = isDev ? createHashHistory : createBrowserHistory;
 
 export default history({
-  basename: BASE_NAME,
+  basename: BASE_NAME
 });

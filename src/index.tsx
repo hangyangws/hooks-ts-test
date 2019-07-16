@@ -29,5 +29,5 @@ ReactDOM.render(
       </Switch>
     </Layout>
   </Router>,
-  Root,
+  Root
 );

@@ -7,7 +7,7 @@ import providers from './providers';
 const Provider = (props: Props): any =>
   providers.reduceRight(
     (children, Parent) => <Parent>{children}</Parent>,
-    props.children,
+    props.children
   );
 
 export default Provider;

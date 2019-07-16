@@ -4,7 +4,7 @@ import request from '@api/request';
 import { useDispatch as useNoticeDispatch } from '@store/notice/index';
 import {
   useDispatch as useAgentsDispatch,
-  useState as useAgentsState,
+  useState as useAgentsState
 } from '@store/agents/index';
 
 import AllView from './AllView';
@@ -26,7 +26,7 @@ const SitesList = () => {
         apiPath: 'agents/getAll',
         callBack: (responseData: AgentItemsProps) => {
           agentsDispatch({ type: 'INIT', payload: responseData.data });
-        },
+        }
       });
     }
   }, [agents.length, agentsDispatch, noticeDispatch]);

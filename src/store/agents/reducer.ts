@@ -13,9 +13,9 @@ const reducer = (state: State, action: Action) => {
         agent.id === payload.id
           ? {
               ...agent,
-              resources: [...agent.resources, ...payload.data],
+              resources: [...agent.resources, ...payload.data]
             }
-          : agent,
+          : agent
       );
     }
     case 'DELETE_RESOURCES': {
@@ -26,10 +26,10 @@ const reducer = (state: State, action: Action) => {
           ? {
               ...agent,
               resources: agent.resources.filter(
-                (_, index) => index !== payload.data,
-              ),
+                (_, index) => index !== payload.data
+              )
             }
-          : agent,
+          : agent
       );
     }
     default:

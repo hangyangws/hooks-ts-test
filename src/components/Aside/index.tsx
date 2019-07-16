@@ -13,7 +13,7 @@ const historyList = [
   'bjstdmngbgr03/Acceptance_test',
   'bjstdmngbgr04/Acceptance_test',
   'bjstdmngbgr05/Acceptance_test',
-  'bjstdmngbgr06/Acceptance_test',
+  'bjstdmngbgr06/Acceptance_test'
 ];
 const History = () => (
   <div className="aside-history">

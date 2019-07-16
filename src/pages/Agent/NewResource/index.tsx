@@ -4,7 +4,7 @@ import cx from 'classnames';
 import request from '@api/request';
 import {
   useDispatch as useNoticeDispatch,
-  useState as useNoticeState,
+  useState as useNoticeState
 } from '@store/notice/index';
 import { useDispatch as useAgentsDispatch } from '@store/agents/index';
 import Button from '@components/Button';
@@ -26,7 +26,7 @@ const NewResource = (props: AgentItemProps) => {
 
   const handleClose = () => {
     noticeDispatch({
-      type: 'CLOSE_RESOURCE',
+      type: 'CLOSE_RESOURCE'
     });
     setResource('');
   };
@@ -38,11 +38,11 @@ const NewResource = (props: AgentItemProps) => {
       const newResource = resource.split(/,|，/);
       const newItem = {
         ...props.data,
-        resources: [...props.data.resources, ...newResource],
+        resources: [...props.data.resources, ...newResource]
       };
       const payload: AddResources = {
         id: props.data.id,
-        data: newResource as Resources,
+        data: newResource as Resources
       };
       request(
         {
@@ -51,12 +51,12 @@ const NewResource = (props: AgentItemProps) => {
           callBack: () => {
             agentsDispatch({
               type: 'ADD_RESOURCES',
-              payload,
+              payload
             });
             setResource('');
-          },
+          }
         },
-        newItem,
+        newItem
       );
     }
     handleClose();

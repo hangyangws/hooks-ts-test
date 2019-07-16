@@ -2,23 +2,23 @@ const asideRouter = [
   {
     name: 'DASHBOAED',
     path: 'dashboard',
-    icon: 'dashboard',
+    icon: 'dashboard'
   },
   {
     name: 'AGENT',
     path: 'agent',
-    icon: 'sitemap',
+    icon: 'sitemap'
   },
   {
     name: 'MY CRUISE',
     path: 'mycruise',
-    icon: 'boat',
+    icon: 'boat'
   },
   {
     name: 'HELP',
     path: 'help',
-    icon: 'life-bouy',
-  },
+    icon: 'life-bouy'
+  }
 ];
 
 export default asideRouter;

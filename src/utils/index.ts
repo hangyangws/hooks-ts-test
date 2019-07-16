@@ -5,7 +5,7 @@ export const getAgentTypeList = (data: Item[]) => {
     [attr: string]: number;
   }
   const rest: Rest = {
-    All: data.length,
+    All: data.length
   };
 
   data.forEach(item => {
@@ -18,14 +18,14 @@ export const getAgentTypeList = (data: Item[]) => {
 
   return Object.keys(rest).map(key => ({
     name: key,
-    number: rest[key],
+    number: rest[key]
   }));
 };
 
 export const getAgentStatusMap = (data: Item[]) => {
   const rest = {
     building: 0,
-    idle: 0,
+    idle: 0
   };
 
   data.forEach(item => {

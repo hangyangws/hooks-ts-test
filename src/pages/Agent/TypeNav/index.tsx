@@ -10,7 +10,7 @@ import './index.scss';
 
 const TypeNav = (props: RoutedAgentTypeProps) => {
   const { type = 'All', keywords = '' } = queryString.parse(
-    props.location.search,
+    props.location.search
   );
 
   const handleSearch = (val: string) => {
@@ -18,8 +18,8 @@ const TypeNav = (props: RoutedAgentTypeProps) => {
       ...props.history.location,
       search: queryString.stringify({
         type,
-        keywords: val,
-      }),
+        keywords: val
+      })
     });
   };
   const handleChangeType = (val: string) => () => {
@@ -30,8 +30,8 @@ const TypeNav = (props: RoutedAgentTypeProps) => {
       ...props.history.location,
       search: queryString.stringify({
         type: val,
-        keywords,
-      }),
+        keywords
+      })
     });
   };
 
@@ -41,7 +41,7 @@ const TypeNav = (props: RoutedAgentTypeProps) => {
         {props.data.map(typeName => (
           <li
             className={cx('agentTypeNav-typeName', {
-              active: type === typeName,
+              active: type === typeName
             })}
             onClick={handleChangeType(typeName)}
             key={typeName}

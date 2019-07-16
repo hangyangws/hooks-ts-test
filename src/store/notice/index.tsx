@@ -6,7 +6,7 @@ import { Action, State } from './types';
 
 export const initState: State = {
   loading: undefined,
-  newResourceAgentId: undefined, // 当前打正在添加 resource 的 agent ID
+  newResourceAgentId: undefined // 当前打正在添加 resource 的 agent ID
 };
 
 const stateCtx = React.createContext(initState);

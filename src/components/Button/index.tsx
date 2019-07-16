@@ -13,7 +13,7 @@ const Button = (props: BtnProps) => (
   <button
     onClick={props.onClick || null}
     className={cx('button', props.className, {
-      'button--isGray': props.gray,
+      'button--isGray': props.gray
     })}
   >
     {props.children}

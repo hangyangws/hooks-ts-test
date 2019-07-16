@@ -24,7 +24,7 @@ const getRenderList = (data: Item[], type: string, keywords: string) => {
   return data.filter(
     item =>
       item.type.toLocaleLowerCase() === type.toLocaleLowerCase() &&
-      item.name.includes(keywords),
+      item.name.includes(keywords)
   );
 };
 
@@ -33,21 +33,21 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
   const agentsDispatch = useAgentsDispatch();
 
   const typeNameList = getAgentTypeList(props.data).map(item =>
-    titleCase(item.name),
+    titleCase(item.name)
   );
   const { type = 'All', keywords = '' } = queryString.parse(
-    props.location.search,
+    props.location.search
   );
   const renderList = getRenderList(
     props.data,
     type as string,
-    keywords as string,
+    keywords as string
   );
 
   const handleDeleteResource = (item: Item, index: number) => () => {
     const newItem = {
       ...item,
-      resources: item.resources.filter((_, i) => i !== index),
+      resources: item.resources.filter((_, i) => i !== index)
     };
     request(
       {
@@ -58,18 +58,18 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
             type: 'DELETE_RESOURCES',
             payload: {
               id: item.id,
-              data: index,
-            },
+              data: index
+            }
           });
-        },
+        }
       },
-      newItem,
+      newItem
     );
   };
   const handleNewResource = (item: Item) => () => {
     noticeDispatch({
       type: 'NEW_RESOURCE',
-      payload: item.id,
+      payload: item.id
     });
   };
 
@@ -96,7 +96,7 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
                     <span
                       className={cx('agentList-itemStatus', {
                         green: status === 'idle',
-                        yellow: status === 'building',
+                        yellow: status === 'building'
                       })}
                     >
                       {status}
