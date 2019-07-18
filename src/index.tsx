@@ -14,6 +14,9 @@ import '@resource/css/fonts.css';
 
 import history from './history';
 
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 const Root = document.getElementById('Root');
 
 ReactDOM.render(
