@@ -16,11 +16,11 @@ import { AddResources, Resources } from '@store/agents/types';
 
 const NewResource = (props: AgentItemProps) => {
   const noticeDispatch = useNoticeDispatch();
-  const notice = useNoticeState();
+  const newResourceAgentId = useNoticeState('newResourceAgentId');
   const agentsDispatch = useAgentsDispatch();
   const [resource, setResource] = React.useState('');
 
-  if (notice.newResourceAgentId !== props.data.id) {
+  if (newResourceAgentId !== props.data.id) {
     return null;
   }
 

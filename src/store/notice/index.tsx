@@ -24,4 +24,10 @@ export const Provider: React.ComponentType = (props: Props) => {
 
 export const useDispatch = () => React.useContext(dispatchCtx);
 
-export const useState = () => React.useContext(stateCtx);
+type ValueOf<T> = T[keyof T];
+
+export const useState = (key?: keyof State): State | ValueOf<State> => {
+  const state = React.useContext(stateCtx);
+
+  return key ? state[key] : state;
+};

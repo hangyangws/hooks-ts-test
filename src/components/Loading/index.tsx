@@ -4,9 +4,9 @@ import { useState } from '@store/notice/index';
 import './index.scss';
 
 const Loading = () => {
-  const state = useState();
+  const loading = useState('loading');
 
-  return state.loading ? (
+  return loading ? (
     <div className="loading">
       <div className="loading-content">
         <div className="loading-bounce1" />
