@@ -1,39 +1,20 @@
 import React from 'react';
 
-import request from '@api/request';
-import { useDispatch as useNoticeDispatch } from '@store/notice/index';
-import {
-  useDispatch as useAgentsDispatch,
-  useState as useAgentsState
-} from '@store/agents/index';
+import { useDispatch, useStore } from '@store/index';
 
 import AllView from './AllView';
 import List from './List';
-import { AgentItemsProps } from './types';
+import { Agent } from '@store/types';
 
 import './index.scss';
 
 const SitesList = () => {
-  const agentsDispatch = useAgentsDispatch();
-  const agents = useAgentsState();
-  const noticeDispatch = useNoticeDispatch();
+  const dispatch = useDispatch();
+  const agents = useStore('agents') as Agent[];
 
-  React.useEffect(() => {
-    if (!agents.length) {
-      // 请求数据
-      request({
-        noticeDispatch,
-        apiPath: 'agents/getAll',
-        callBack: (responseData: AgentItemsProps) => {
-          agentsDispatch({ type: 'INIT', payload: responseData.data });
-        }
-      });
-    }
-  }, [agents.length, agentsDispatch, noticeDispatch]);
-
-  if (!agents) {
-    return null;
-  }
+  React.useMemo(() => {
+    dispatch({ type: 'AGENTS_FETCH' });
+  }, [dispatch]);
 
   if (!agents.length) {
     return <p className="agent-empty">Data empty.</p>;

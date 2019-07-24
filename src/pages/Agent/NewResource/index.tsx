@@ -1,23 +1,17 @@
 import React from 'react';
 import cx from 'classnames';
 
-import request from '@api/request';
-import {
-  useDispatch as useNoticeDispatch,
-  useState as useNoticeState
-} from '@store/notice/index';
-import { useDispatch as useAgentsDispatch } from '@store/agents/index';
+import { useDispatch, useStore } from '@store/index';
+import { AddResources, Resources, Notice } from '@store/types';
 import Button from '@components/Button';
 
 import { AgentItemProps } from '../types';
 
 import './index.scss';
-import { AddResources, Resources } from '@store/agents/types';
 
 const NewResource = (props: AgentItemProps) => {
-  const noticeDispatch = useNoticeDispatch();
-  const newResourceAgentId = useNoticeState('newResourceAgentId');
-  const agentsDispatch = useAgentsDispatch();
+  const dispatch = useDispatch();
+  const { newResourceAgentId } = useStore('notice') as Notice;
   const [resource, setResource] = React.useState('');
 
   if (newResourceAgentId !== props.data.id) {
@@ -25,41 +19,29 @@ const NewResource = (props: AgentItemProps) => {
   }
 
   const handleClose = () => {
-    noticeDispatch({
-      type: 'CLOSE_RESOURCE'
-    });
     setResource('');
+    dispatch({
+      type: 'NOTICE_RESOURCE_CLOSE'
+    });
   };
   const handleChangeResource = (e: React.ChangeEvent<HTMLInputElement>) => {
     setResource(e.target.value);
   };
-  const handleAddResources = () => {
+  const handleAddResources = async () => {
     if (resource) {
       const newResource = resource.split(/,|，/);
-      const newItem = {
-        ...props.data,
-        resources: [...props.data.resources, ...newResource]
-      };
       const payload: AddResources = {
         id: props.data.id,
         data: newResource as Resources
       };
-      request(
-        {
-          noticeDispatch,
-          apiPath: 'agents/modify',
-          callBack: () => {
-            agentsDispatch({
-              type: 'ADD_RESOURCES',
-              payload
-            });
-            setResource('');
-          }
-        },
-        newItem
-      );
+
+      await dispatch({
+        type: 'RESOURCES_ADD',
+        payload
+      });
+
+      handleClose();
     }
-    handleClose();
   };
 
   return (

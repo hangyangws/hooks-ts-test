@@ -1,14 +1,14 @@
 import { RouteComponentProps } from 'react-router-dom';
-import { Item } from '@store/agents/types';
+import { Agent } from '@store/types';
 
 export interface RoutedAgentItemsProps extends RouteComponentProps {
   className?: string;
-  data: Item[];
+  data: Agent[];
 }
 
 export interface AgentItemsProps {
   className?: string;
-  data: Item[];
+  data: Agent[];
 }
 
 export interface RoutedAgentTypeProps extends RouteComponentProps {
@@ -18,5 +18,5 @@ export interface RoutedAgentTypeProps extends RouteComponentProps {
 
 export interface AgentItemProps {
   className?: string;
-  data: Item;
+  data: Agent;
 }

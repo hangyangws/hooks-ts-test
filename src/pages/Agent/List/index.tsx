@@ -3,11 +3,9 @@ import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 import cx from 'classnames';
 
-import request from '@api/request';
 import osImg from '@resource/osImg/index';
-import { useDispatch as useNoticeDispatch } from '@store/notice/index';
-import { useDispatch as useAgentsDispatch } from '@store/agents/index';
-import { Item } from '@store/agents/types';
+import { useDispatch, useStore } from '@store/index';
+import { Agent, Agents } from '@store/types';
 import { titleCase, getAgentTypeList } from '@utils/index';
 
 import NewResource from '../NewResource';
@@ -16,7 +14,7 @@ import { RoutedAgentItemsProps } from '../types';
 
 import './index.scss';
 
-const getRenderList = (data: Item[], type: string, keywords: string) => {
+const getRenderList = (data: Agents, type: string, keywords: string) => {
   if (type === 'All') {
     return data.filter(item => item.name.includes(keywords));
   }
@@ -29,8 +27,8 @@ const getRenderList = (data: Item[], type: string, keywords: string) => {
 };
 
 const List = withRouter((props: RoutedAgentItemsProps) => {
-  const noticeDispatch = useNoticeDispatch();
-  const agentsDispatch = useAgentsDispatch();
+  const dispatch = useDispatch();
+  const agents = useStore('agents') as Agents;
 
   const typeNameList = getAgentTypeList(props.data).map(item =>
     titleCase(item.name)
@@ -44,31 +42,18 @@ const List = withRouter((props: RoutedAgentItemsProps) => {
     keywords as string
   );
 
-  const handleDeleteResource = (item: Item, index: number) => () => {
-    const newItem = {
-      ...item,
-      resources: item.resources.filter((_, i) => i !== index)
-    };
-    request(
-      {
-        noticeDispatch,
-        apiPath: 'agents/modify',
-        callBack: () => {
-          agentsDispatch({
-            type: 'DELETE_RESOURCES',
-            payload: {
-              id: item.id,
-              data: index
-            }
-          });
-        }
-      },
-      newItem
-    );
+  const handleDeleteResource = (item: Agent, index: number) => () => {
+    dispatch({
+      type: 'RESOURCES_DELETE',
+      payload: {
+        id: item.id,
+        data: index
+      }
+    });
   };
-  const handleNewResource = (item: Item) => () => {
-    noticeDispatch({
-      type: 'NEW_RESOURCE',
+  const handleNewResource = (item: Agent) => () => {
+    dispatch({
+      type: 'NOTICE_RESOURCE_NEW',
       payload: item.id
     });
   };

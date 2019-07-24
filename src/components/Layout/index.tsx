@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Provider from '@store/provider';
 import Header from '@components/Header';
 import Aside from '@components/Aside';
 import Footer from '@components/Footer';
@@ -11,7 +10,7 @@ import { Props } from 'src/types';
 import './index.scss';
 
 const Layout = (props: Props) => (
-  <Provider>
+  <>
     <Header />
     <main className="layout">
       <Aside />
@@ -19,7 +18,7 @@ const Layout = (props: Props) => (
     </main>
     <Footer />
     <Loading />
-  </Provider>
+  </>
 );
 
 export default Layout;

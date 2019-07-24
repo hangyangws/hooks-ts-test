@@ -1,6 +1,6 @@
-import { Item } from '@store/agents/types';
+import { Agent } from '@store/types';
 
-export const getAgentTypeList = (data: Item[]) => {
+export const getAgentTypeList = (data: Agent[]) => {
   interface Rest {
     [attr: string]: number;
   }
@@ -22,7 +22,7 @@ export const getAgentTypeList = (data: Item[]) => {
   }));
 };
 
-export const getAgentStatusMap = (data: Item[]) => {
+export const getAgentStatusMap = (data: Agent[]) => {
   const rest = {
     building: 0,
     idle: 0
