@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start-server": "json-server --watch ./__mocks__/db.json --port 3001",
-    "start": "npm i && webpack-dev-server --open",
+    "start": "webpack-dev-server --open",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint ./src --ext '.js,.jsx,ts,tsx' --fix",
     "test": "jest"
