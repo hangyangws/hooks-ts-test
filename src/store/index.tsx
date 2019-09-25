@@ -39,7 +39,7 @@ const Provider = (props: Props) => {
  * });
  */
 export const useDispatch = () => React.useContext(dispatchCtx);
-export const useStore = (nameSpace: keyof State) => {
+export const useStore = (nameSpace?: keyof State) => {
   const store = React.useContext(storeCxt);
   return nameSpace ? store[nameSpace] : store;
 };
