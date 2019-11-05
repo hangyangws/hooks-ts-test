@@ -1,18 +1,19 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { apiHost } from '@config/index';
-import { Agent } from '@store/types';
-import { PromiseReturn } from './types';
+import { Item } from '@store/agents/types';
 
-export const getAll = async (): PromiseReturn =>
-  axios({
+export async function getAll(): Promise<AxiosResponse> {
+  return axios({
     url: `${apiHost}/agents`,
     method: 'get'
   });
+}
 
-export const modify = async (data: Agent): PromiseReturn =>
-  axios({
+export async function modify(data: Item): Promise<AxiosResponse> {
+  return axios({
     url: `${apiHost}/agents/${data.id}`,
     method: 'PUT',
     data
   });
+}

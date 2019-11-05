@@ -1,12 +1,10 @@
 import React from 'react';
-import { useStore } from '@store/index';
-
-import { Notice } from '@store/types';
+import { useState } from '@store/notice/index';
 
 import './index.scss';
 
 const Loading = () => {
-  const { loading } = useStore('notice') as Notice;
+  const loading = useState('loading');
 
   return loading ? (
     <div className="loading">
