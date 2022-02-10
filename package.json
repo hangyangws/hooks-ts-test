@@ -70,7 +70,7 @@
     "json-server": "^0.15.0",
     "lint-staged": "^9.2.0",
     "mini-css-extract-plugin": "^0.7.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^1.18.2",
     "sass-loader": "^7.1.0",
